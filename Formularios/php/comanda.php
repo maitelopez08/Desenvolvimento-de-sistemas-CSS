@@ -8,14 +8,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $quantidade = (int) $_POST["quantidade"];
     $preco = htmlspecialchars($_POST["preco"]);
     $unidade = htmlspecialchars($_POST["unidade"]);
-
-    // Exemplo: salvar em um arquivo .txt
     $linha = "Comanda: $num_comanda | ID: $id_produto | Categoria: $categoria | Nome: $nome | Quantidade: $quantidade | Preço: $preco | Unidade: $unidade" . PHP_EOL;
-    file_put_contents("comandas.txt", $linha, FILE_APPEND);
-
-    echo "<h3>Comanda registrada com sucesso!</h3>";
-    echo "<a href='comanda.html'>Voltar ao formulário</a>";
-} else {
-    echo "<p>Método inválido.</p>";
-}
+    file_put_contents("comandas.txt", $linha, FILE_APPEND);}
 ?>
