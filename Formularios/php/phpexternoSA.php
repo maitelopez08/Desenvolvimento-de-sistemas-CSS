@@ -1,12 +1,29 @@
-<?php
-    if(isset($_post['num_comanda'])&& isset($_post['id_produto'])&& isset($_post['categoria_produto'])&& isset($_post['nome_produto'])&& isset($_post['quantidade'])&& isset($_post['preco'])&& isset($_post['unidade'])){
-        echo "Dados dos produtos recebidos :<br>";
-        echo "Número de Comanda: " . $_post['num_comanda'] . "<br>";
-        echo "ID do Produto: " . $_post['id_produto'] . "<br>";
-        echo "Categoria: " . $_post['categoria_produto'] . "<br>";
-        echo "Nome: " . $_post['nome_produto'] . "<br>";
-        echo "Quantidade: " . $_post['quantidade'] . "<br>";
-        echo "Preço: " . $_post['preco'] . "<br>";
-        echo "Unidade: " . $_post['unidade'] . "<br>";
+<?php session_start();?>
+   <?php
+    $lista_tarefas = array();
+        if (isset($_GET['nome'])){
+            $_SESSION['lista_tarefas'][] = $_GET['nome'];
+        }
+
+    $lista_tarefas = array();
+
+        if (isset($_GET['nome'])){
+            $lista_tarefas[] = $_SESSION['lista_tarefas'];
     }
-?>
+    ?>
+    <table>
+        <tr>
+        <th>Número de Comanda</th>    
+        <th>ID do Produto</th>
+        <th>Categoria</th>
+        <th>Nome</th>
+        <th>Quantidade</th>
+        <th>Preço</th>
+        <th>Unidade</th>
+        </tr>
+        <?php foreach ($lista_tarefas as $tarefa): ?>
+        <tr>
+            <td><?php echo $tarefa; ?> </td>
+        </tr>
+        <?php endforeach; ?>
+    </table>
